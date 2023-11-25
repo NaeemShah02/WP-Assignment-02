@@ -14,26 +14,26 @@ body {
 
 
 
-.containe {
+.container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
 }
 
-.containe h2 {
+.container h2 {
     font-size: 1.2rem;
     font-weight: normal;
 }
 
 
-.containe img {
+.container img {
     width: 100%;
     height: 250px;
 }
 
 @media(max-width:560px) {
-    .containe {
+    .container {
         display: flex;
         flex-direction: column;
 
@@ -48,7 +48,7 @@ body {
 
 .card{
     margin: 10px;
-    background-color: #d4e9ff;
+    background-color: #c4ddf8;
 }
 
 .category-item {

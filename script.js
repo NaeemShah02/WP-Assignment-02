@@ -26,7 +26,7 @@ fetch('books.json')
       html += htmlSegment;
     });
 
-    let container = document.querySelector('.containe');
+    let container = document.querySelector('.container');
     container.innerHTML = html;
 
     const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
