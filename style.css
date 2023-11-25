@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #afafce;
+    line-height: 1.7;
+    color: #323330;
+}
+
+
+
+
+.containe {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.containe h2 {
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+
+.containe img {
+    width: 100%;
+    height: 250px;
+}
+
+@media(max-width:560px) {
+    .containe {
+        display: flex;
+        flex-direction: column;
+
+    }
+}
+
+.carousel img{
+    width: 100%; 
+    height: 500px;
+    overflow: hidden;
+}
+
+.card{
+    margin: 10px;
+    background-color: #d4e9ff;
+}
+
+.category-item {
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;margin: 10px;
+    font-size: 0.9rem;
+}
+
+
+
+.navbar{
+    background-color: #93c0f0;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.con {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.receipt {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.total-amount {
+    text-align: right;
+    margin-top: 20px;
+}
+
+
+.contact {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.contact-info {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

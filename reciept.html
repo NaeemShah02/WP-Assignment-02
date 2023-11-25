@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="con">
+        <h1>Payment Receipt</h1>
+
+        <div class="receipt">
+            <h2>Order Summary</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Book Title</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody id="receiptItems">
+                  
+                </tbody>
+            </table>
+
+            <hr>
+
+            <div class="total-amount">
+                <h3>Total Amount:</h3>
+                <p id="totalAmount">$0.00</p>
+            </div>
+
+            <button class="btn btn-primary">Pay Now</button>
+            <br>
+            <a href="index.html">home</a>
+        </div>
+    </div>
+    <script src="payement.js"></script>
+</body>
+</html>

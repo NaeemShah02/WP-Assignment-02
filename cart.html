@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+     <nav class="navbar navbar-expand-lg p-3">
+       <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">OLMS</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link mx-2 active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link mx-2 dropdown-toggle" href="categories.html" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categories
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="categories.html">Fiction</a></li>
+                  <li><a class="dropdown-item" href="categories.html">Dystopian</a></li>
+                  <li><a class="dropdown-item" href="categories.html">Classic</a></li>
+                  <li><a class="dropdown-item" href="categories.html">Science Fiction</a></li>
+                  <li><a class="dropdown-item" href="categories.html">Fantasy</a></li>
+                  <li><a class="dropdown-item" href="categories.html">Mystery</a></li>
+                  <li><a class="dropdown-item" href="categories.html">Historical Fiction</a></li>
+                  <li><a class="dropdown-item" href="categories.html">Gothic</a></li>
+                  <li><a class="dropdown-item" href="categories.html">Horror</a></li>
+                  <li><a class="dropdown-item" href="categories.html">Philosophical</a></li>
+                  <li><a class="dropdown-item" href="categories.html">Contemporary</a></li>
+                  <li><a class="dropdown-item" href="categories.html">Autobiographical</a></li>
+                  <li><a class="dropdown-item" href="categories.html">Adventure</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="contact.html">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="cart.html">Cart</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+
+
+    <h1>Shopping Cart</h1>
+
+    <div class="containe mt-4">
+        <div class="row" id="cartItems">
+            <!-- Cart items will be displayed here -->
+        </div>
+    </div>
+
+    <p id="totalAmount" class="total-amount">
+        Total Amount: $0.00 <!-- Total amount will be displayed here dynamically -->
+    </p>
+<a href="reciept.html">Get reciept</a>
+
+
+
+
+
+
+<script>
+function fetchBooks() {
+    return fetch('books.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok.');
+            }
+            return response.json();
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}
+
+fetchBooks().then(books => {
+
+    let cart = [];
+
+    function addToCart(title, price) {
+        const existingItem = cart.find(item => item.title === title);
+
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            cart.push({ title, price, quantity: 1 });
+        }
+
+        updateCartDisplay();
+    }
+
+    function removeFromCart(title) {
+        cart = cart.filter(item => item.title !== title);
+        updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+        const cartItemsContaine = document.getElementById('cartItems');
+        cartItemsContaine.innerHTML = '';
+
+        cart.forEach(item => {
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('col-md-4', 'mb-3');
+            cartItem.innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.title}</h5>
+                        <p class="card-text">Price: $${item.price}</p>
+                        <p class="card-text">Quantity: ${item.quantity}</p>
+                        <button class="btn btn-danger remove-from-cart-btn" data-title="${item.title}">Remove</button>
+                    </div>
+                </div>
+            `;
+            cartItemsContaine.appendChild(cartItem);
+        });
+
+        const totalAmount = calculateTotalAmount();
+        const totalAmountDisplay = document.getElementById('totalAmount');
+        totalAmountDisplay.textContent = `Total Amount: $${totalAmount}`;
+    }
+
+    function calculateTotalAmount() {
+        return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+    }
+
+    document.addEventListener('click', event => {
+        if (event.target.classList.contains('remove-from-cart-btn')) {
+            const title = event.target.getAttribute('data-title');
+            removeFromCart(title);
+        }
+    });
+});
+
+</script>
+
+
+<script src="category.js"></script>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
